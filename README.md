@@ -8,3 +8,5 @@
 - Assign Leave
 - Mark Attendance
 - Logout
+
+---under streamlining---
