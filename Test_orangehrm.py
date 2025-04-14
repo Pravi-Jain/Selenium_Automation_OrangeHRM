@@ -42,6 +42,42 @@ try:
     )
     print("Login successful!")
 
+
+    ### Search user
+
+    # custom name - can be added through excel
+    uname = input("Enter the name to search")
+    time.sleep(10)
+
+    # username
+    driver.find_element(By.XPATH, "//div[@class='oxd-form-row']/div/div[1]/div/div[2]/input").send_keys(uname)
+
+    # role
+    driver.find_element(By.XPATH, "//div[@class='oxd-select-wrapper']/div/div[1]").click()
+    if uname == 'Admin':
+        driver.find_element(By.XPATH, "//div[@role='listbox']/div[2]").click()
+    else:
+        driver.find_element(By.XPATH, "//div[@role='listbox']/div[3]").click()
+
+    # status
+    rolestatus = driver.find_elements(By.XPATH, "//div[@class='oxd-select-wrapper']/div/div[1]")
+    rolestatus[1].click()
+    driver.find_element(By.XPATH, "//div[@role='listbox']/div[2]").click()
+
+    # driver.find_element(By.XPATH, "//div[@role='listbox']/div[3]").click()         # disabled
+
+    # search button
+    driver.find_element(By.XPATH, "//div[@class='oxd-form-actions']/button[2]").click()
+
+    # Reset Search
+    #driver.find_element(By.XPATH, "//div[@class='oxd-form-actions']/button[1]").click()
+
+
+    
+    ### Add user
+    driver.find_element(By.XPATH, "//*[@id='app']/div[1]/div[2]/div[2]/div/div[2]/div[1]/button").click()
+
+
 except Exception as e:
     print(f"An error occurred: {e}")
 
